@@ -10,7 +10,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "uuid": "^11.1.0"
   },
   "dependencies": {
     "cors": "^2.8.6",
