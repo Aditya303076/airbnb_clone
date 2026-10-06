@@ -26,6 +26,84 @@ interface ListingPageProps {
   initialPhotoTourOpen?: boolean;
 }
 
+const normalizePropertyData = (raw: any, fallback: Property): Property => {
+  if (!raw) return fallback;
+
+  const rawPhotos = Array.isArray(raw.photos) && raw.photos.length > 0 ? raw.photos : fallback.photos;
+  const photos = rawPhotos.map((p: any, idx: number) => {
+    const defaultP = fallback.photos[idx % fallback.photos.length];
+    return {
+      id: p.id || defaultP.id,
+      url: p.url || defaultP.url,
+      caption: p.caption || defaultP.caption,
+      category: p.category || defaultP.category,
+      isHero: p.isHero ?? defaultP.isHero,
+      heroPosition: p.heroPosition || defaultP.heroPosition
+    };
+  });
+
+  const rawPrice = raw.price || {};
+  const perNight = rawPrice.perNight || rawPrice.amount || fallback.price.perNight;
+
+  return {
+    id: raw.id || fallback.id,
+    title: raw.title || fallback.title,
+    tagline: raw.tagline || fallback.tagline,
+    type: raw.type || fallback.type,
+    location: {
+      city: raw.location?.city || fallback.location.city,
+      state: raw.location?.state || fallback.location.state,
+      country: raw.location?.country || fallback.location.country,
+      neighborhood: raw.location?.neighborhood || fallback.location.neighborhood,
+      lat: raw.location?.coordinates?.lat || raw.location?.lat || fallback.location.lat,
+      lng: raw.location?.coordinates?.lng || raw.location?.lng || fallback.location.lng,
+    },
+    rating: typeof raw.rating === 'number' ? raw.rating : fallback.rating,
+    reviewCount: typeof raw.reviewCount === 'number' ? raw.reviewCount : fallback.reviewCount,
+    isSuperhost: raw.isSuperhost ?? raw.host?.isSuperhost ?? fallback.isSuperhost,
+    guestsMax: raw.guestsMax || raw.guestCapacity?.guests || fallback.guestsMax,
+    bedrooms: raw.bedrooms || raw.guestCapacity?.bedrooms || fallback.bedrooms,
+    beds: raw.beds || raw.guestCapacity?.beds || fallback.beds,
+    baths: raw.baths || raw.guestCapacity?.baths || fallback.baths,
+    host: {
+      name: raw.host?.name || fallback.host.name,
+      avatar: raw.host?.avatar || raw.host?.avatarUrl || fallback.host.avatar,
+      isSuperhost: raw.host?.isSuperhost ?? fallback.host.isSuperhost,
+      joinedDate: raw.host?.joinedDate || fallback.host.joinedDate,
+      yearsHosting: raw.host?.yearsHosting || fallback.host.yearsHosting,
+      ratingCount: raw.host?.ratingCount || fallback.host.ratingCount,
+      responseRate: raw.host?.responseRate ?? fallback.host.responseRate,
+      responseTime: raw.host?.responseTime || fallback.host.responseTime,
+      bio: raw.host?.bio || fallback.host.bio,
+      coHosts: raw.host?.coHosts || fallback.host.coHosts || []
+    },
+    photos: photos,
+    highlights: Array.isArray(raw.highlights) && raw.highlights.length > 0 ? raw.highlights : fallback.highlights,
+    description: raw.description || fallback.description,
+    sleepingArrangements: Array.isArray(raw.sleepingArrangements) && raw.sleepingArrangements.length > 0 ? raw.sleepingArrangements : fallback.sleepingArrangements,
+    amenities: Array.isArray(raw.amenities) && raw.amenities.length > 0
+      ? raw.amenities.map((a: any) => ({
+          id: a.id || `a-${Math.random()}`,
+          name: a.name || 'Amenity',
+          iconName: a.iconName || 'sparkles',
+          category: a.category || 'Popular',
+          isTopAmenity: a.isTopAmenity ?? true
+        }))
+      : fallback.amenities,
+    reviewCategoryScores: raw.reviewCategoryScores || fallback.reviewCategoryScores,
+    reviews: Array.isArray(raw.reviews) && raw.reviews.length > 0 ? raw.reviews : fallback.reviews,
+    price: {
+      perNight,
+      currencySymbol: rawPrice.currencySymbol || fallback.price.currencySymbol,
+      currencyCode: rawPrice.currencyCode || rawPrice.currency || fallback.price.currencyCode,
+      originalPerNight: rawPrice.originalPerNight || fallback.price.originalPerNight,
+      cleaningFee: rawPrice.cleaningFee ?? fallback.price.cleaningFee,
+      serviceFee: rawPrice.serviceFee ?? fallback.price.serviceFee,
+      taxRatePercentage: rawPrice.taxRatePercentage ?? fallback.price.taxRatePercentage
+    }
+  };
+};
+
 export const ListingPage: React.FC<ListingPageProps> = ({ initialPhotoTourOpen = false }) => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -42,11 +120,8 @@ export const ListingPage: React.FC<ListingPageProps> = ({ initialPhotoTourOpen =
     let isMounted = true;
     ApiClient.getPropertyById(targetId).then(res => {
       if (isMounted && res && res.success && res.data) {
-        const data = res.data;
-        if (data.price && !data.price.perNight) {
-          data.price.perNight = data.price.amount;
-        }
-        setProperty(data);
+        const normalized = normalizePropertyData(res.data, mockProperty);
+        setProperty(normalized);
       }
     });
 

@@ -18,7 +18,14 @@ export const Reviews: React.FC<ReviewsProps> = ({ property }) => {
     onEscape: () => setIsReviewsModalOpen(false)
   });
 
-  const scores = property.reviewCategoryScores;
+  const scores = property.reviewCategoryScores || {
+    cleanliness: 5,
+    accuracy: 5,
+    checkIn: 5,
+    communication: 5,
+    location: 5,
+    value: 5
+  };
 
   const categoryScoreList = [
     { label: 'Cleanliness', score: scores.cleanliness },

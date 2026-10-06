@@ -869,7 +869,7 @@ export class DatabaseEngine {
         return { title: dest.title, subtitle: dest.subtitle!, type: dest.type, iconType: dest.iconType, colorTheme: dest.colorTheme };
       }
 
-      const matchingProps = this.properties.filter(p =>
+      const matchingProps = Array.from(this.properties.values()).filter(p =>
         p.location.city.toLowerCase().includes(dest.searchKey.toLowerCase()) ||
         p.location.state.toLowerCase().includes(dest.searchKey.toLowerCase()) ||
         p.title.toLowerCase().includes(dest.searchKey.toLowerCase())
