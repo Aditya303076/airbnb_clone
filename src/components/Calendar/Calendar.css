@@ -1,0 +1,118 @@
+.calendar-section {
+  width: 100%;
+}
+
+.calendar-header-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+}
+
+.calendar-subtext {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.clear-dates-btn {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  color: var(--color-text-primary);
+}
+
+.calendar-months-container {
+  display: flex;
+  gap: 48px;
+}
+
+.month-block {
+  flex: 1;
+}
+
+.month-header-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.days-header-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px 0;
+}
+
+.calendar-day {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.calendar-day.empty {
+  cursor: default;
+}
+
+.calendar-day:hover:not(.empty) {
+  border: 1px solid var(--color-text-dark);
+}
+
+.calendar-day.selected-start,
+.calendar-day.selected-end {
+  background-color: var(--color-text-dark) !important;
+  color: var(--color-text-light) !important;
+  border-radius: 50%;
+}
+
+.calendar-day.in-range {
+  background-color: var(--color-bg-secondary);
+  border-radius: 0;
+}
+
+/* Airbnb-style Dimmed Font Color for Booked / Reserved Dates */
+.calendar-day.booked-date {
+  color: #b0b0b0 !important;
+  text-decoration: line-through;
+  cursor: not-allowed !important;
+  opacity: 0.55;
+  background: transparent !important;
+  pointer-events: none;
+}
+
+.calendar-day.booked-date:hover {
+  border: none !important;
+}
+
+.calendar-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.keyboard-icon-btn {
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}

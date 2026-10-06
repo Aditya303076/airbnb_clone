@@ -1,0 +1,200 @@
+/* Airbnb Authentic High-Fidelity Login & Sign-up Modal Styling */
+.login-modal-content {
+  max-width: 560px;
+  width: 100%;
+  max-height: calc(100vh - 40px);
+  border-radius: 16px;
+  overflow-y: auto;
+  background-color: #FFFFFF;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  position: relative;
+}
+
+.login-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #EBEBEB;
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+  z-index: 10;
+}
+
+.icon-circle-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #222222;
+  transition: background-color 0.15s ease;
+}
+
+.icon-circle-btn:hover {
+  background-color: #F7F7F7;
+}
+
+.login-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.login-modal-body {
+  padding: 24px;
+}
+
+.welcome-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #222222;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.phone-field-wrapper {
+  border: 1px solid #B0B0B0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.phone-field-wrapper:focus-within {
+  border-color: #222222;
+  box-shadow: 0 0 0 1px #222222;
+}
+
+.country-select-block {
+  padding: 8px 12px 2px 12px;
+  border-bottom: 1px solid #B0B0B0;
+  background-color: #FFFFFF;
+}
+
+.phone-input-block {
+  padding: 6px 12px 8px 12px;
+  background-color: #FFFFFF;
+}
+
+.field-mini-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #717171;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.country-select-dropdown {
+  width: 100%;
+  border: none;
+  font-size: 15px;
+  color: #222222;
+  background: transparent;
+  outline: none;
+  padding: 2px 0 4px 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.phone-text-input {
+  width: 100%;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  color: #222222;
+  background: transparent;
+  padding: 4px 0;
+  font-family: inherit;
+}
+
+.privacy-notice {
+  font-size: 12px;
+  color: #717171;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.privacy-notice a {
+  color: #222222;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.submit-login-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #E00B41 0%, #D70466 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.submit-login-btn:hover {
+  opacity: 0.96;
+}
+
+.margin-top-sm {
+  margin-top: 16px;
+}
+
+.login-divider-row {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.login-divider-row::before,
+.login-divider-row::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #DDDDDD;
+}
+
+.login-divider-row span {
+  padding: 0 16px;
+  font-size: 12px;
+  color: #717171;
+}
+
+.social-buttons-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222222;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.social-login-btn:hover {
+  background-color: #F7F7F7;
+}

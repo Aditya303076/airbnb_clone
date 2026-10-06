@@ -1,0 +1,128 @@
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-bg-lightbox);
+  z-index: var(--z-lightbox);
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text-light);
+  user-select: none;
+}
+
+.lightbox-header {
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lightbox-close-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.lightbox-close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.lightbox-counter {
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+}
+
+.lightbox-grid-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: background-color var(--transition-fast);
+}
+
+.lightbox-grid-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Stage */
+.lightbox-main-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: relative;
+}
+
+.lightbox-nav-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  z-index: 10;
+}
+
+.lightbox-nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.06);
+}
+
+.lightbox-image-wrapper {
+  max-width: 82vw;
+  max-height: 76vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Footer Caption */
+.lightbox-footer {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+.lightbox-caption-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+.lightbox-category-tag {
+  font-weight: var(--font-weight-bold);
+  color: #FFFFFF;
+}
+
+.lightbox-dot {
+  margin: 0 6px;
+}

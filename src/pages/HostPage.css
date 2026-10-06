@@ -1,0 +1,175 @@
+.host-login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F7F7F7;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Poster Grid */
+.poster-grid-bg {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  padding: 40px;
+  opacity: 0.85;
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.poster-card {
+  height: 220px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.poster-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.poster-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%);
+}
+
+/* Centered Login Modal Container */
+.login-modal-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  z-index: 10;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 520px;
+  background-color: #FFFFFF;
+  border-radius: 28px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.login-airbnb-icon {
+  margin-bottom: 12px;
+}
+
+.login-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 24px;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-input-field {
+  width: 100%;
+  height: 56px;
+  border: 1px solid #B0B0B0;
+  border-radius: 12px;
+  padding: 0 18px;
+  font-size: 16px;
+  color: var(--color-text-primary);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-input-field:focus {
+  border-color: #222222;
+  box-shadow: 0 0 0 2px #222222;
+}
+
+.login-continue-btn {
+  width: 100%;
+  height: 52px;
+  background-color: #E51D53;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.login-continue-btn:hover {
+  background-color: #DE1262;
+  transform: scale(1.01);
+}
+
+.login-divider-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0 16px 0;
+}
+
+.login-divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #DDDDDD;
+}
+
+.login-divider-text {
+  padding: 0 16px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* Social Buttons Row */
+.social-buttons-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.social-btn {
+  width: 64px;
+  height: 52px;
+  border: 1px solid #B0B0B0;
+  border-radius: 14px;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.social-btn:hover {
+  border-color: #222222;
+  background-color: #F7F7F7;
+}

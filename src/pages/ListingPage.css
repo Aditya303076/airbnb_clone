@@ -1,0 +1,132 @@
+.listing-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-split-content {
+  display: grid;
+  grid-template-columns: 1fr 370px;
+  gap: 80px;
+  align-items: start;
+  margin-top: var(--space-lg);
+}
+
+.listing-left-col {
+  min-width: 0; /* Prevent grid overflow */
+}
+
+.listing-right-col {
+  position: relative;
+}
+
+/* Explore Options & Breadcrumbs */
+.explore-options-section {
+  padding: 48px 0 64px;
+  border-top: 1px solid var(--color-border-light);
+  margin-top: 64px;
+}
+
+.breadcrumbs-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+}
+
+.active-breadcrumb {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.explore-group {
+  margin-bottom: 32px;
+}
+
+.margin-top-md {
+  margin-top: 32px;
+}
+
+.explore-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 24px;
+}
+
+.explore-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 32px;
+}
+
+.explore-item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.explore-item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.explore-item-sub {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.explore-item-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: text-decoration 0.15s ease;
+}
+
+.explore-item-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .listing-split-content {
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 860px) {
+  .listing-split-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .reservation-card {
+    position: static !important;
+  }
+
+  .explore-grid-3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-gallery-grid {
+    height: 300px;
+    grid-template-columns: 1fr;
+  }
+  .hero-subgrid {
+    display: none;
+  }
+  .hero-main {
+    border-radius: var(--radius-md) !important;
+  }
+  .explore-grid-3col {
+    grid-template-columns: 1fr;
+  }
+}

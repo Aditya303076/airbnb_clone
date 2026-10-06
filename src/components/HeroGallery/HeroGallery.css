@@ -1,0 +1,105 @@
+.hero-gallery-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: var(--space-xl);
+}
+
+.hero-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  height: 450px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.hero-main {
+  height: 100%;
+  position: relative;
+}
+
+.hero-subgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  height: 100%;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--color-bg-secondary);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), filter var(--transition-fast);
+}
+
+.item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color var(--transition-fast);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+.gallery-item:hover .item-overlay {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Border Radii for Hero Grid Corners */
+.hero-main {
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.item-sub-2 {
+  border-top-right-radius: var(--radius-md);
+}
+
+.item-sub-4 {
+  border-bottom-right-radius: var(--radius-md);
+}
+
+/* Show All Photos Floating Button */
+.show-all-photos-btn {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-text-dark);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  z-index: 5;
+}
+
+.show-all-photos-btn:hover {
+  background-color: var(--color-bg-secondary);
+  transform: scale(1.02);
+}
+
+.show-all-photos-btn:active {
+  transform: scale(0.98);
+}

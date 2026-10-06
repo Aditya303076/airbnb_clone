@@ -1,0 +1,101 @@
+openapi: 3.0.3
+info:
+  title: Airbnb Clone Enterprise REST API
+  description: High-performance, multi-tier cached backend API for Airbnb marketplace.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/api/v1
+    description: Development Server
+paths:
+  /properties:
+    get:
+      summary: Search and filter property listings
+      parameters:
+        - name: destination
+          in: query
+          schema:
+            type: string
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: minPrice
+          in: query
+          schema:
+            type: number
+        - name: maxPrice
+          in: query
+          schema:
+            type: number
+        - name: guests
+          in: query
+          schema:
+            type: integer
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Successful listing retrieval
+  /properties/{id}:
+    get:
+      summary: Fetch single listing details
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Listing details payload
+        '404':
+          description: Listing not found
+  /reservations:
+    post:
+      summary: Create booking reservation
+      headers:
+        Idempotency-Key:
+          schema:
+            type: string
+          description: Unique idempotency key to prevent duplicate bookings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - propertyId
+                - checkIn
+                - checkOut
+                - totalPrice
+              properties:
+                propertyId:
+                  type: string
+                checkIn:
+                  type: string
+                  format: date
+                checkOut:
+                  type: string
+                  format: date
+                totalPrice:
+                  type: number
+      responses:
+        '201':
+          description: Booking confirmed
+        '409':
+          description: Booking conflict / date overlap
+  /health:
+    get:
+      summary: Telemetry metrics and cluster health
+      responses:
+        '200':
+          description: System health report
