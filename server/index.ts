@@ -49,11 +49,11 @@ const distPath = path.join(__dirname, '../dist');
 app.use(express.static(distPath));
 
 // SPA routing fallback for non-API routes
-app.get('*', (req, res, next) => {
-  if (req.originalUrl.startsWith('/api')) {
-    return next();
+app.use((req, res, next) => {
+  if (req.method === 'GET' && !req.originalUrl.startsWith('/api')) {
+    return res.sendFile(path.join(distPath, 'index.html'));
   }
-  res.sendFile(path.join(distPath, 'index.html'));
+  next();
 });
 
 // Standardized Global Error Handler
